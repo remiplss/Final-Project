@@ -116,6 +116,32 @@ optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
 
 [[package]]
+name = "contourpy"
+version = "1.0.7"
+description = "Python library for calculating contours of 2D quadrilateral grids"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+numpy = ">=1.16"
+
+[package.extras]
+bokeh = ["bokeh", "chromedriver", "selenium"]
+docs = ["furo", "sphinx-copybutton"]
+mypy = ["contourpy", "docutils-stubs", "mypy (==0.991)", "types-pillow"]
+test = ["matplotlib", "pillow", "pytest"]
+test-no-images = ["pytest"]
+
+[[package]]
+name = "cycler"
+version = "0.11.0"
+description = "Composable style cycles"
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[[package]]
 name = "debugpy"
 version = "1.6.3"
 description = "An implementation of the Debug Adapter Protocol for Python"
@@ -141,6 +167,28 @@ Werkzeug = ">=2.2.2"
 [package.extras]
 async = ["asgiref (>=3.2)"]
 dotenv = ["python-dotenv"]
+
+[[package]]
+name = "fonttools"
+version = "4.38.0"
+description = "Tools to manipulate font files"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+all = ["fs (>=2.2.0,<3)", "lxml (>=4.0,<5)", "zopfli (>=0.1.4)", "lz4 (>=1.7.4.2)", "matplotlib", "sympy", "skia-pathops (>=0.5.0)", "uharfbuzz (>=0.23.0)", "brotlicffi (>=0.8.0)", "scipy", "brotli (>=1.0.1)", "munkres", "unicodedata2 (>=14.0.0)", "xattr"]
+graphite = ["lz4 (>=1.7.4.2)"]
+interpolatable = ["scipy", "munkres"]
+lxml = ["lxml (>=4.0,<5)"]
+pathops = ["skia-pathops (>=0.5.0)"]
+plot = ["matplotlib"]
+repacker = ["uharfbuzz (>=0.23.0)"]
+symfont = ["sympy"]
+type1 = ["xattr"]
+ufo = ["fs (>=2.2.0,<3)"]
+unicode = ["unicodedata2 (>=14.0.0)"]
+woff = ["zopfli (>=0.1.4)", "brotlicffi (>=0.8.0)", "brotli (>=1.0.1)"]
 
 [[package]]
 name = "frozenlist"
@@ -212,6 +260,14 @@ MarkupSafe = ">=2.0"
 i18n = ["Babel (>=2.7)"]
 
 [[package]]
+name = "kiwisolver"
+version = "1.4.4"
+description = "A fast implementation of the Cassowary constraint solver"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[[package]]
 name = "lxml"
 version = "4.9.2"
 description = "Powerful and Pythonic XML processing library combining libxml2/libxslt with the ElementTree API."
@@ -234,6 +290,25 @@ optional = false
 python-versions = ">=3.7"
 
 [[package]]
+name = "matplotlib"
+version = "3.6.3"
+description = "Python plotting package"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+contourpy = ">=1.0.1"
+cycler = ">=0.10"
+fonttools = ">=4.22.0"
+kiwisolver = ">=1.0.1"
+numpy = ">=1.19"
+packaging = ">=20.0"
+pillow = ">=6.2.0"
+pyparsing = ">=2.2.1"
+python-dateutil = ">=2.7"
+
+[[package]]
 name = "multidict"
 version = "6.0.2"
 description = "multidict implementation"
@@ -253,12 +328,28 @@ python-versions = ">=3.8"
 name = "packaging"
 version = "21.3"
 description = "Core utilities for Python packages"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6"
 
 [package.dependencies]
 pyparsing = ">=2.0.2,<3.0.5 || >3.0.5"
+
+[[package]]
+name = "pandas"
+version = "1.5.2"
+description = "Powerful data structures for data analysis, time series, and statistics"
+category = "main"
+optional = false
+python-versions = ">=3.8"
+
+[package.dependencies]
+numpy = {version = ">=1.20.3", markers = "python_version < \"3.10\""}
+python-dateutil = ">=2.8.1"
+pytz = ">=2020.1"
+
+[package.extras]
+test = ["hypothesis (>=5.5.3)", "pytest (>=6.0)", "pytest-xdist (>=1.31)"]
 
 [[package]]
 name = "parso"
@@ -271,6 +362,18 @@ python-versions = ">=3.6"
 [package.extras]
 qa = ["flake8 (==3.8.3)", "mypy (==0.782)"]
 testing = ["docopt", "pytest (<6.0.0)"]
+
+[[package]]
+name = "pillow"
+version = "9.4.0"
+description = "Python Imaging Library (Fork)"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.extras]
+docs = ["furo", "olefile", "sphinx (>=2.4)", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-issues (>=3.0.1)", "sphinx-removed-in", "sphinxext-opengraph"]
+tests = ["check-manifest", "coverage", "defusedxml", "markdown2", "olefile", "packaging", "pyroma", "pytest", "pytest-cov", "pytest-timeout"]
 
 [[package]]
 name = "pluggy"
@@ -296,12 +399,23 @@ python-versions = ">=3.6"
 name = "pyparsing"
 version = "3.0.9"
 description = "pyparsing module - Classes and methods to define and execute parsing grammars"
-category = "dev"
+category = "main"
 optional = false
 python-versions = ">=3.6.8"
 
 [package.extras]
 diagrams = ["railroad-diagrams", "jinja2"]
+
+[[package]]
+name = "python-dateutil"
+version = "2.8.2"
+description = "Extensions to the standard Python datetime module"
+category = "main"
+optional = false
+python-versions = "!=3.0.*,!=3.1.*,!=3.2.*,>=2.7"
+
+[package.dependencies]
+six = ">=1.5"
 
 [[package]]
 name = "python-lsp-jsonrpc"
@@ -334,6 +448,14 @@ validation = ["pydantic (>=1.7.4)"]
 global = ["appdirs (>=1.4.4)"]
 gen_docs = ["pytoolconfig", "sphinx-rtd-theme (>=1.0.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx (>=4.5.0)"]
 doc = ["sphinx (>=4.5.0)", "tabulate (>=0.8.9)"]
+
+[[package]]
+name = "pytz"
+version = "2022.7.1"
+description = "World timezone definitions, modern and historical"
+category = "main"
+optional = false
+python-versions = "*"
 
 [[package]]
 name = "replit"
@@ -415,6 +537,32 @@ pytoolconfig = ">=1.1.2"
 [package.extras]
 doc = ["sphinx-rtd-theme (>=1.0.0)", "sphinx-autodoc-typehints (>=1.18.1)", "sphinx (>=4.5.0)", "pytoolconfig"]
 dev = ["build (>=0.7.0)", "pytest-timeout (>=2.1.0)", "pytest (>=7.0.1)"]
+
+[[package]]
+name = "seaborn"
+version = "0.12.2"
+description = "Statistical data visualization"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+matplotlib = ">=3.1,<3.6.1 || >3.6.1"
+numpy = ">=1.17,<1.24.0 || >1.24.0"
+pandas = ">=0.25"
+
+[package.extras]
+dev = ["pytest", "pytest-cov", "pytest-xdist", "flake8", "mypy", "pandas-stubs", "pre-commit", "flit"]
+docs = ["numpydoc", "nbconvert", "ipykernel", "sphinx-copybutton", "sphinx-issues", "sphinx-design", "pyyaml", "pydata_sphinx_theme (==0.10.0rc2)"]
+stats = ["scipy (>=1.3)", "statsmodels (>=0.10)"]
+
+[[package]]
+name = "six"
+version = "1.16.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "soupsieve"
@@ -526,7 +674,7 @@ testing = ["pytest (>=6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "flake8 
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8.0,<3.9"
-content-hash = "eb013a28ece29040b6698118536cae0d997ba1a456fca7d45d9fbf2475509d29"
+content-hash = "1635e415bdb6521cd3262380acead579e0a498683747745b1dcca525a8a6ba16"
 
 [metadata.files]
 aiohttp = []
@@ -539,29 +687,40 @@ certifi = []
 charset-normalizer = []
 click = []
 colorama = []
+contourpy = []
+cycler = []
 debugpy = []
 flask = []
+fonttools = []
 frozenlist = []
 idna = []
 importlib-metadata = []
 itsdangerous = []
 jedi = []
 jinja2 = []
+kiwisolver = []
 lxml = []
 markupsafe = []
+matplotlib = []
 multidict = []
 numpy = []
 packaging = []
+pandas = []
 parso = []
+pillow = []
 pluggy = []
 pyflakes = []
 pyparsing = []
+python-dateutil = []
 python-lsp-jsonrpc = []
 pytoolconfig = []
+pytz = []
 replit = []
 replit-python-lsp-server = []
 requests = []
 rope = []
+seaborn = []
+six = []
 soupsieve = []
 toml = []
 tomli = []
