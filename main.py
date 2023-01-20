@@ -7,7 +7,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 # Utilize this library for visualization.
 import seaborn as sns
-import pandas as pd
 
 from palette import Palette
 from color import MostUsedColor
@@ -49,14 +48,11 @@ for url in url_images:
     fp.close()
     i = i + 1
 
-#create list of images
-i = 0
-list_images = []
+#create list to store the data
 most_used_colors = []
 meanRGB_images = []
 for filename in glob.glob('images/*'):
   im = Image.open(filename)
-  list_images.append(im)
   #color palette of the artist
   df = Palette(im)
   #most used color by the artist
@@ -70,7 +66,7 @@ for filename in glob.glob('images/*'):
   im.close()
 
 #identify the most used colors on the different paintings and MeanRGB
-# Create a 2D array of shape (1, len(input), 3)
+# Create 2D arrays to use the data in the plot
 color_array = np.zeros((1, len(most_used_colors), 3))
 color_mean = np.zeros((1, len(meanRGB_images), 3))
 
@@ -82,9 +78,9 @@ for i in range(len(meanRGB_images)):
   color_mean[0, i, :] = meanRGB_images[i] 
   
 # Use the imshow function to display the different colors
-# Create the figure and axes
 fig, (ax1, ax2) = plt.subplots(1, 2)
 
+#Used this parameters to avoid the warning :(color_array * 255).astype(np.uint8)
 ax1.imshow((color_array * 255).astype(np.uint8))
 ax1.set_title("Most used color in all the paintings")
 
